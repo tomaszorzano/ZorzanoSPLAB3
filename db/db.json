@@ -1,0 +1,44 @@
+{
+  "anuncios": [
+    {
+      "id": 1,
+      "titulo": "Ford Escort",
+      "transaccion": "Venta",
+      "descripcion": "Ford Escort 2002 Gris ",
+      "precio": "198.000",
+      "puertas": "4",
+      "kilometros": "134.000",
+      "potencia": "120"
+    },
+    {
+      "id": 2,
+      "titulo": "Suzuki Fun",
+      "transaccion": "Alquiler",
+      "descripcion": "Suzuki Fun 2005 Gris ",
+      "precio": "230.000",
+      "puertas": "5",
+      "kilometros": "189.000",
+      "potencia": "90"
+    },
+    {
+      "id": 3,
+      "titulo": "Peugeot 307",
+      "transaccion": "Venta",
+      "descripcion": "Peugeot 307 negro",
+      "precio": "900.000",
+      "puertas": "5",
+      "kilometros": "130.000",
+      "potencia": "110"
+    },
+    {
+      "id": 4,
+      "titulo": "Renault Clio",
+      "transaccion": "Alquiler",
+      "descripcion": "Clio 1998 Full Full Rojo",
+      "precio": "125.000",
+      "puertas": "3",
+      "kilometros": "234.000",
+      "potencia": "200"
+    }
+  ]
+}

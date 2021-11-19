@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/scripts.js" type="module" defer></script>
+    <link rel="stylesheet" href="./css/estilos.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <title>Automoviles</title>
+</head>
+
+<body>
+    <header>
+        <nav id="navHeader">
+            <ul>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Anuncios</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="./PaginaPrincipal.html">Pagina Principal</a></li>
+            </ul>
+        </nav>
+
+        <p id="ad">Administracion</p>
+        <img src="./images/car.png" />
+    </header>
+
+    <main>
+        <form class="container" action="">
+            <fieldset>
+                <legend>Informacion del anuncio</legend>
+
+                <input type="hidden" name="id" />
+                <label>Titulo:</label>
+                <input type="text" name="titulo" id="titulo" placeholder="Titulo" required />
+                <br />
+                <br />
+
+                <label>Descripcion:</label>
+                <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" required />
+                <br />
+                <br />
+
+                <fieldset id="transaccion">
+                    <legend>Transaccion</legend>
+                    <input type="checkbox" name="transaccion" id="cboxVenta" value="venta" />
+                    Venta <br />
+                    <input type="checkbox" name="transaccion" id="cboxAlquiler" value="alquiler" />
+                    Alquiler <br />
+                </fieldset>
+
+                <label>Precio:</label>
+                <input type="number" name="precio" id="precio" placeholder="Precio" min="1" required /><br />
+                <br />
+
+                <div id="rfv">
+                    <img src="./images/puerta.png" />
+                    <input type="number" name="puertas" id="puertas" min="1" max="5" placeholder="puertas" required /><br />
+                    <br />
+                    <img src="./images/kms.png" />
+                    <input type="number" name="kilometros" id="kilometros" placeholder="kilometros" min="0" required /><br />
+                    <br />
+                    <img src="./images/potencia.png" />
+                    <input type="number" name="potencia" id="potencia" placeholder="potencia" min="0" required /><br />
+                    <br />
+                </div>
+            </fieldset>
+
+            <div>
+                <h2>Filtros</h2>
+                <div>
+                    <label> Filtrar por </label>
+                    <label>Promedio:</label>
+                    <input type="text" id="inputProm" disabled>
+                </div>
+                
+                    <button id="btnTodos" >Todos</button>
+                    <button id="btnAlquiler" >Alquiler</button>
+                    <button id="btnVenta" >Venta</button>
+                
+            </div>
+
+            <div>
+                <h3>Campos mostrados</h3>
+                <div>
+                    <input class="cb" type="checkbox" id="cbTitulo" name="titulo" checked />
+                    <label class="" for="cbTitulo">titulo</label>
+                    <input class="cb" type="checkbox" id="cbTransaccion" name="transaccion" checked />
+                    <label class="" for="cbTransaccion">transaccion</label>
+                    <input class="cb" type="checkbox" id="cbDescripcion" name="descripcion" checked />
+                    <label class="" for="cbDescripcion">descripcion</label>
+                    <input class="cb" type="checkbox" id="cbPrecio" name="precio" checked />
+                    <label class="" for="cbPrecio">precio</label>
+                    <input class="cb" type="checkbox" id="cbPuertas" name="puertas" checked />
+                    <label class="" for="cbPuertas">puertas</label>
+                    <input class="cb" type="checkbox" id="cbKms" name="kilometros" checked />
+                    <label class="" for="cbKms">kms</label>
+                    <input class="cb" type="checkbox" id="cbPotencia" name="potencia" checked />
+                    <label class="" for="cbPotencia">potencia</label>
+                </div>
+            </div>
+
+            <div>
+                <input type="submit" id="btnSubmit" class="submit" value="Save" />
+                <input type="button" id="btnEliminar" class="oculto" value="Delete" />
+                <input type="button" id="btnCancelar" class="oculto" value="Cancel" />
+            </div>
+
+            <div id="spinner-container"></div>
+            <div id="divLista"></div>
+        </form>
+    </main>
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Anuncios</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+        <p>Todos los derechos reservados <date>2021</date> &copy;</p>
+    </footer>
+</body>
+
+</html>
