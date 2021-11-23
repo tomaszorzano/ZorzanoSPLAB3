@@ -4,18 +4,40 @@ import {
 } from "./axiosAsync.js";
 
 const url = "http://localhost:3000/anuncios";
-let listaArticulos;
+let listaArticulos = [];
 
-window.addEventListener("DOMContentLoaded", inicializarManejadoresArticulos);
-
-async function inicializarManejadoresArticulos() 
-{
+const getAnuncios = () => {
   
-  listaArticulos = await obtenerAnuncios(url);
-  console.log(listaArticulos);
-  crearAnuncio(listaArticulos);
+  //Instanciar obj xmlHTTP
+  const xhr = new XMLHttpRequest();
+  //Asignar un handler a la peticion
+  xhr.onreadystatechange = () => {
+    
+      if (xhr.readyState == 4) {
+          if (xhr.status >= 200 && xhr.status < 299) {
+              listaArticulos = JSON.parse(xhr.responseText);
+              if (listaArticulos.length > 0) {
+                crearAnuncio(listaArticulos);
+                console.log(listaArticulos);
+            }
+          } else {
+              const statusText = xhr.statusText || "ocurrio un error";
+              console.error(`Error: ${xhr.status} : ${statusText}`);
+              
+          }
+      }
+  };
+  //abrir la peticion
+  xhr.open("GET", "http://localhost:3000/anuncios");
+  //enviar peticion
+  xhr.send();
+  
   
 }
+
+window.addEventListener("DOMContentLoaded",getAnuncios);
+
+
 
 //const listaAnuncios = JSON.parse(localStorage.getItem("listaAnuncios")) || [];
 
