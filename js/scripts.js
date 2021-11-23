@@ -11,7 +11,9 @@ import {
 const url = "http://localhost:3000/anuncios";
 let anuncios;
 let listaActual;
-const checks = document.querySelectorAll(".cb");
+const checks = document.querySelectorAll(".form-check-input");
+const eliminar = document.getElementById("btnEliminar");
+const cancelar = document.getElementById("btnCancelar");
 
 const btnTodos = document.getElementById("btnTodos");
 const btnAlquiler = document.getElementById("btnAlquiler");
@@ -43,28 +45,23 @@ async function inicializarManejadores() {
 async function handlerSubmit(e) {
   e.preventDefault();
   const frm = e.target;
-  var transaccion;
+  let resultado;
+
   var idA;
 
   if (frm.id.value) {
     idA = frm.id.value;
-    if (document.getElementById("cboxVenta").checked == true) {
-      transaccion = "Venta";
-    }
-    if (document.getElementById("cboxAlquiler").checked == true) {
-      transaccion = "Alquiler";
-    }
     const anuncioEditado = new Anuncio_auto(
       idA,
       document.getElementById("titulo").value,
-      transaccion,
+      frm.transaccion.value,
       document.getElementById("descripcion").value,
       document.getElementById("precio").value,
       document.getElementById("puertas").value,
       document.getElementById("kilometros").value,
       document.getElementById("potencia").value
     );
-    if (confirm("Confirma modificacion?")) {
+    if (await alertMod()) {
       //agregarSpinner();
 
       await modificarAnuncio(`${url}/${idA}`, anuncioEditado);
@@ -72,18 +69,12 @@ async function handlerSubmit(e) {
       //eliminarspinner();
     }
   } else {
-    if (confirm("Confirma alta?")) {
-      console.log("Dando de alta");
-      if (document.getElementById("cboxVenta").checked == true) {
-        transaccion = "Venta";
-      }
-      if (document.getElementById("cboxAlquiler").checked == true) {
-        transaccion = "Alquiler";
-      }
+    if (await alertAlta()) {
+
       const nuevoAnuncio = new Anuncio_auto(
         Date.now(),
         document.getElementById("titulo").value,
-        transaccion,
+        frm.transaccion.value,
         document.getElementById("descripcion").value,
         document.getElementById("precio").value,
         document.getElementById("puertas").value,
@@ -109,7 +100,7 @@ async function handlerClick(e) {
   } else if (e.target.matches("#btnEliminar")) {
     let id = parseInt(document.forms[0].id.value);
 
-    if (confirm("Confirma baja?")) {
+    if (await alertBaja()) {
       //agregarSpinner();
       //let index = anuncios.findIndex((el) => el.id == id);
       await eliminarAnuncio(`${url}/${id}`);
@@ -122,6 +113,7 @@ async function handlerClick(e) {
     limpiarForm(document.forms[0]);
   } else if (e.target.matches("#btnCancelar")) {
     limpiarForm(document.forms[0]);
+
   }
 }
 
@@ -146,6 +138,7 @@ function crearTabla(items) {
   const tabla = document.createElement("table");
   tabla.appendChild(crearThead(items[0]));
   tabla.appendChild(crearTbody(items));
+  tabla.classList.add("table");
   return tabla;
 }
 function renderizarLista(lista, contenedor) {
@@ -163,11 +156,12 @@ function handlerLoadList(e) {
 function crearThead(item) {
   const thead = document.createElement("thead");
   const tr = document.createElement("tr");
-
+  thead.classList.add("table-dark");
   for (const key in item) {
     if (key !== "id") {
       const th = document.createElement("th");
-      th.style.backgroundColor = "orange";
+      th.classList.add("text-uppercase");
+      th.style.backgroundColor = "black";
       th.textContent = key;
       tr.appendChild(th);
     }
@@ -205,12 +199,14 @@ function eliminarspinner() {
   document.getElementById("spinner-container").innerHTML = "";
 }*/
 function limpiarForm(frm) {
+
   frm.reset();
-  document.getElementById("btnEliminar").classList.add("oculto");
-  document.getElementById("btnCancelar").classList.add("oculto");
   document.getElementById("btnSubmit").value = "Save";
+  eliminar.setAttribute("disabled", "true");
+  cancelar.setAttribute("disabled", "true");
   document.forms[0].id.value = "";
 }
+
 function cargarFrm(id) {
   const {
     titulo,
@@ -225,22 +221,15 @@ function cargarFrm(id) {
   document.getElementById("titulo").value = titulo;
   document.getElementById("descripcion").value = descripcion;
   document.getElementById("precio").value = precio;
-  if (transaccion == "Venta") {
-    document.getElementById("cboxVenta").checked = true;
-    document.getElementById("cboxAlquiler").checked = false;
-  }
-  if (transaccion == "Alquiler") {
-    document.getElementById("cboxAlquiler").checked = true;
-    document.getElementById("cboxVenta").checked = false;
-  }
+  form.transaccion.value = transaccion;
   document.getElementById("kilometros").value = kilometros;
   document.getElementById("puertas").value = puertas;
   document.getElementById("potencia").value = potencia;
-
   form.id.value = id;
   document.getElementById("btnSubmit").value = "Modificar";
-  document.getElementById("btnEliminar").classList.remove("oculto");
-  document.getElementById("btnCancelar").classList.remove("oculto");
+  eliminar.removeAttribute("disabled");
+  cancelar.removeAttribute("disabled");
+
 }
 
 function handlerCheck() {
@@ -296,3 +285,54 @@ function handlerFilterTodos() {
   handlerLoadList(anuncios);
   inputProm.value = "N/A";
 }
+function alertAlta() {
+ return Swal.fire({
+    title: 'Alta',
+    text: 'Desea dar de alta?',
+    showCancelButton: true,
+    confirmButtonText: 'Aceptar',
+    cancelButtonText: 'Cancelar',
+    showLoaderOnConfirm: true,
+    preConfirm: (isConfirm) => {
+      return isConfirm;
+    }
+  }).then(response => {
+    Swal.close();
+    return response.value; 
+  });
+}
+function alertMod() {
+  return Swal.fire({
+     title: 'Modificacion',
+     text: 'Desea Modificar el anuncio?',
+     showCancelButton: true,
+     confirmButtonText: 'Aceptar',
+     cancelButtonText: 'Cancelar',
+     showLoaderOnConfirm: true,
+     preConfirm: (isConfirm) => {
+       return isConfirm;
+     }
+   }).then(response => {
+     Swal.close();
+     return response.value; 
+   });
+ }
+ function alertBaja() {
+  return Swal.fire({
+     title: 'Baja',
+     text: 'Desea Eliminar el anuncio?',
+     showCancelButton: true,
+     confirmButtonText: 'Aceptar',
+     cancelButtonText: 'Cancelar',
+     showLoaderOnConfirm: true,
+     preConfirm: (isConfirm) => {
+       return isConfirm;
+     }
+   }).then(response => {
+     Swal.close();
+     return response.value; 
+   });
+ }
+
+
+

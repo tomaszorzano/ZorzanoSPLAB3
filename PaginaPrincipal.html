@@ -1,46 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/pagPrincipal.css" />
-    <script src="./js/pagPrincipal.js" type="module"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <title>Pagina Principal</title>
-  </head>
 
-  <body>
-    <header>
-      <nav id="navHeader">
-        <ul>
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Anuncios</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contacto</a></li>
-          <li><a href="./index.html">Administracion</a></li>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/pagPrincipal.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <script src="./js/pagPrincipal.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <title>Pagina Principal</title>
+</head>
+
+
+
+<body>
+
+  <header class="container-fluid p-0">
+    <nav class="navbar navbar-expand-md navbar-light bg-danger text-uppercase shadow" id="navHeader">
+      <a class="navbar-brand ml-5" href="#">
+        <img src="./images/logo.png" height="80px" alt="logo" />
+      </a>
+      <div class="collapse navbar-collapse justify-content-end">
+        <ul class="nav mr-5">
+          <li><a class="nav-item nav-link btn btn-link text-black" href="#">Nosotros</a></li>
+          <li><a class="nav-item nav-link btn btn-link text-black " href="#">Anuncios</a></li>
+          <li><a class="nav-item nav-link btn btn-link text-black" href="#">Blog</a></li>
+          <li><a class="nav-item nav-link btn btn-link text-black" href="#">Contacto</a></li>
+          <li><a class="nav-item nav-link btn btn-link text-black" href="./index.html">Administracion</a>
+          </li>
         </ul>
-      </nav>
-      <h1>Venta y Alquiler de Vehiculos Exclusivos de Lujo</h1>
-    </header>
-    <main>
-        <h2>Autos en Venta y Alquiler</h2>
-        <div id="anuncios">
-        <div id="spinner-container"></div>
+      </div>
 
-        </article>
+    </nav>
+
+  </header>
+
+  <main>
+    <h2 class="text-center">Autos en Venta y Alquiler</h2>
+    <div id="anuncios">
+      <div id="spinner-container"></div>
+
+      </article>
     </div>
-    </main>
+  </main>
+  <div class="container-fluid p-0">
     <footer>
-      <nav>
-        <ul>
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Anuncios</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
+      <nav class="navbar navbar-expand-md navbar-light bg-danger text-uppercase align-top">
+        <div class="collapse navbar-collapse m-3" id="navfooter">
+          <div class="nav ml-5">
+            <li><a class="nav-item nav-link btn btn-link text-black" href="#">Nosotros</a></li>
+            <li><a class="nav-item nav-link btn btn-link text-black" href="#">Anuncios</a></li>
+            <li><a class="nav-item nav-link btn btn-link text-black" href="#">Blog</a></li>
+            <li><a class="nav-item nav-link btn btn-link text-black" href="#">Contacto</a></li>
+          </div>
+        </div>
+        <span class="font-weight-bold mr-5">Todos los derechos reservados &copy</span>
       </nav>
-      <p>Todos los derechos reservados <date>2021</date> &copy;</p>
     </footer>
-  </body>
+  </div>
+
+
+
+
+</body>
+
+
+
 </html>

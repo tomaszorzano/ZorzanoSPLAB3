@@ -6,124 +6,217 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./js/scripts.js" type="module" defer></script>
-    <link rel="stylesheet" href="./css/estilos.css" />
+    <script src="https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title>Automoviles</title>
 </head>
 
 <body>
-    <header>
-        <nav id="navHeader">
-            <ul>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Anuncios</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="./PaginaPrincipal.html">Pagina Principal</a></li>
-            </ul>
+    <header class="container-fluid p-0">
+        <nav class="navbar navbar-expand-md navbar-light bg-danger text-uppercase shadow" id="navHeader">
+            <a class="navbar-brand ml-5" href="#">
+                <img src="./images/logo.png" height="80px" alt="logo" />
+            </a>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="nav mr-5">
+                    <li><a class="nav-item nav-link btn btn-link text-black" href="#">Nosotros</a></li>
+                    <li><a class="nav-item nav-link btn btn-link text-black " href="#">Anuncios</a></li>
+                    <li><a class="nav-item nav-link btn btn-link text-black" href="#">Blog</a></li>
+                    <li><a class="nav-item nav-link btn btn-link text-black" href="#">Contacto</a></li>
+                    <li><a class="nav-item nav-link btn btn-link text-black" href="./PaginaPrincipal.html">Pagina
+                            Principal</a>
+                    </li>
+                </ul>
+            </div>
+
         </nav>
 
-        <p id="ad">Administracion</p>
-        <img src="./images/car.png" />
     </header>
+    </div>
 
-    <main>
-        <form class="container" action="">
-            <fieldset>
-                <legend>Informacion del anuncio</legend>
+    <div class="container-fluid p-0 text-center ">
+        <div class="row">
+            <h1 class="font-weight-normal display-4">Administración</h1>
+            <img class=" d-none d-sm-block" src="./images/car.png" width="100%" height="300px" alt="banner" id="img-banner" />
+        </div>
+        
+    </div>
 
-                <input type="hidden" name="id" />
-                <label>Titulo:</label>
-                <input type="text" name="titulo" id="titulo" placeholder="Titulo" required />
-                <br />
-                <br />
+    <div>
+        <div class="container col-5">
+            <main>
+                <form class="m-4 h6" action="">
+                    <fieldset class="border p-3 bg-light">
+                        <legend class="w-auto">Informacion del anuncio</legend>
 
-                <label>Descripcion:</label>
-                <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" required />
-                <br />
-                <br />
+                        <div class="form-group mb-0">
+                            <input type="hidden" name="id" />
+                        </div>
+                        <div class="form-group text-uppercase mb-4">
+                            <label for="txtTitulo"> Titulo:</label>
+                            <input type="text" class="form-control" id="titulo" placeholder="Titulo" name="titulo"
+                                required />
+                        </div>
 
-                <fieldset id="transaccion">
-                    <legend>Transaccion</legend>
-                    <input type="checkbox" name="transaccion" id="cboxVenta" value="venta" />
-                    Venta <br />
-                    <input type="checkbox" name="transaccion" id="cboxAlquiler" value="alquiler" />
-                    Alquiler <br />
-                </fieldset>
 
-                <label>Precio:</label>
-                <input type="number" name="precio" id="precio" placeholder="Precio" min="1" required /><br />
-                <br />
+                        <div class="form-group text-uppercase  mb-4">
+                            <label for="txtDescripcion">Descripción:</label>
+                            <input type="text" class="form-control" id="descripcion" placeholder="Descripcion"
+                                name="descripcion" required />
+                        </div>
 
-                <div id="rfv">
-                    <img src="./images/puerta.png" />
-                    <input type="number" name="puertas" id="puertas" min="1" max="5" placeholder="puertas" required /><br />
-                    <br />
-                    <img src="./images/kms.png" />
-                    <input type="number" name="kilometros" id="kilometros" placeholder="kilometros" min="0" required /><br />
-                    <br />
-                    <img src="./images/potencia.png" />
-                    <input type="number" name="potencia" id="potencia" placeholder="potencia" min="0" required /><br />
-                    <br />
-                </div>
-            </fieldset>
+                        <div class="form-row text-uppercase mb-5">
+                            <div class="col-xl-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="transaccion" id="venta"
+                                        value="Venta" checked />
+                                    <label class="form-check-label" for="rdoV">Venta</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-3">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="transaccion" id="alquiler"
+                                        value="Alquiler" />
+                                    <label class="form-check-label" for="rdoA">Alquiler</label>
+                                </div>
+                            </div>
+                        </div>
 
-            <div>
-                <h2>Filtros</h2>
-                <div>
+
+                        <div class="form-group text-uppercase mb-4">
+                            <label for="numberPrecio"> Precio:</label>
+                            <input type="number" class="form-control" id="precio" placeholder="Precio" name="precio"
+                                required />
+                        </div>
+
+                        <div class="row pt-2 pb-3" id="rfv">
+                            <div class="col-xl">
+                                <div class="form-group">
+                                    <div class="row align-items-center">
+                                        <div class="col-2 pr-0">
+                                            <img src="./images/puerta.png" alt="puertas" />
+                                        </div>
+                                        <div class="col">
+                                            <input type="number" class="form-control" placeholder="Puertas"
+                                                name="puertas" id="puertas" required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl">
+                                <div class="form-group">
+                                    <div class="row align-items-center">
+                                        <div class="col-2 pr-0">
+                                            <img src="./images/kms.png" alt="kilometros" />
+                                        </div>
+                                        <div class="col">
+                                            <input type="number" id="kilometros" class="form-control"
+                                                placeholder="Kilometros" name="kilometros" required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl">
+                                <div class="form-group">
+                                    <div class="row align-items-center">
+                                        <div class="col-2 pr-0">
+                                            <img src="./images/potencia.png" alt="potencia" />
+                                        </div>
+                                        <div class="col">
+                                            <input type="number" class="form-control" placeholder="Potencia"
+                                                name="potencia" id="potencia" required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="row">
+                                <div class="btn-group  ">
+                                    <input type="submit" id="btnSubmit" class="btn btn-primary" value="Save" />
+                                    <input type="button" id="btnEliminar" class="btn btn-primary" value="Delete" disabled />
+                                    <input type="button" id="btnCancelar" class="btn btn-primary" value="Cancel" disabled />
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </fieldset>
+                </form>
+            </main>
+        </div>
+
+        <div  class="text-center" id="spinner-container"></div>
+
+        <div class="container bg-light  ">
+            <div class="flex-row justify-content-between ">
+                <h2 class="text-center">Filtros </h2>
+                <div class="text-center">
                     <label> Filtrar por </label>
                     <label>Promedio:</label>
                     <input type="text" id="inputProm" disabled>
                 </div>
-                
-                    <button id="btnTodos" >Todos</button>
-                    <button id="btnAlquiler" >Alquiler</button>
-                    <button id="btnVenta" >Venta</button>
-                
-            </div>
+                <br>
+                <div class="text-center  ">
+                    <div class="btn-group">
+                        <button class="btn btn-secondary" id="btnTodos">Todos</button>
+                        <button class="btn btn-secondary" id="btnAlquiler">Alquiler</button>
+                        <button class="btn btn-secondary" id="btnVenta">Venta</button>
+                    </div>
+                </div>
 
-            <div>
-                <h3>Campos mostrados</h3>
-                <div>
-                    <input class="cb" type="checkbox" id="cbTitulo" name="titulo" checked />
-                    <label class="" for="cbTitulo">titulo</label>
-                    <input class="cb" type="checkbox" id="cbTransaccion" name="transaccion" checked />
-                    <label class="" for="cbTransaccion">transaccion</label>
-                    <input class="cb" type="checkbox" id="cbDescripcion" name="descripcion" checked />
-                    <label class="" for="cbDescripcion">descripcion</label>
-                    <input class="cb" type="checkbox" id="cbPrecio" name="precio" checked />
-                    <label class="" for="cbPrecio">precio</label>
-                    <input class="cb" type="checkbox" id="cbPuertas" name="puertas" checked />
-                    <label class="" for="cbPuertas">puertas</label>
-                    <input class="cb" type="checkbox" id="cbKms" name="kilometros" checked />
-                    <label class="" for="cbKms">kms</label>
-                    <input class="cb" type="checkbox" id="cbPotencia" name="potencia" checked />
-                    <label class="" for="cbPotencia">potencia</label>
+
+            </div>
+        </div>
+
+        <div class="container mt-4 p-0">
+            <div class="container bg-light ">
+                <div class="row">
+                    <h3 class="text-center"> Campos mostrados</h3>
+
+                    <div class="col text-uppercase text-center">
+                        <label class="form-check-label" for="cbTitulo">titulo</label>
+                        <input class="form-check-input" type="checkbox" id="cbTransaccion" name="transaccion" checked />
+                        <label class="form-check-label" for="cbTransaccion">transaccion</label>
+                        <input class="form-check-input" type="checkbox" id="cbDescripcion" name="descripcion" checked />
+                        <label lass="form-check-label" for="cbDescripcion">descripcion</label>
+                        <input class="form-check-input" type="checkbox" id="cbPrecio" name="precio" checked />
+                        <label class="form-check-label" for="cbPrecio">precio</label>
+                        <input class="form-check-input" type="checkbox" id="cbPuertas" name="puertas" checked />
+                        <label lass="form-check-label" for="cbPuertas">puertas</label>
+                        <input class="form-check-input" type="checkbox" id="cbKms" name="kilometros" checked />
+                        <label class="form-check-label" for="cbKms">kms</label>
+                        <input class="form-check-input" type="checkbox" id="cbPotencia" name="potencia" checked />
+                        <label lass="form-check-label" for="cbPotencia">potencia</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <div id="divSpinner"></div>
                 </div>
             </div>
+            <div id="divLista" class="table-responsive mt-2 text-center"></div>
+        </div>
 
-            <div>
-                <input type="submit" id="btnSubmit" class="submit" value="Save" />
-                <input type="button" id="btnEliminar" class="oculto" value="Delete" />
-                <input type="button" id="btnCancelar" class="oculto" value="Cancel" />
-            </div>
-
-            <div id="spinner-container"></div>
-            <div id="divLista"></div>
-        </form>
-    </main>
-    <footer>
-        <nav>
-            <ul>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Anuncios</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
-        <p>Todos los derechos reservados <date>2021</date> &copy;</p>
-    </footer>
+        <div class="container-fluid p-0">
+            <footer>
+                <nav class="navbar navbar-expand-md navbar-light bg-danger text-uppercase align-top">
+                    <div class="collapse navbar-collapse m-3" id="navfooter">
+                        <div class="nav ml-5">
+                            <li><a class="nav-item nav-link btn btn-link text-black" href="#">Nosotros</a></li>
+                            <li><a class="nav-item nav-link btn btn-link text-black" href="#">Anuncios</a></li>
+                            <li><a class="nav-item nav-link btn btn-link text-black" href="#">Blog</a></li>
+                            <li><a class="nav-item nav-link btn btn-link text-black" href="#">Contacto</a></li>
+                        </div>
+                    </div>
+                    <span class="font-weight-bold mr-5">Todos los derechos reservados &copy</span>
+                </nav>
+            </footer>
+        </div>
 </body>
 
 </html>

@@ -26,9 +26,11 @@ const crearAnuncio = (data) => {
 
     data.forEach((element, index) => {
     const $anuncio = document.createElement("anunciox");
-    $anuncio.classList.add("anuncioCuerpo");
+    $anuncio.classList.add("container");
+    $anuncio.classList.add("bg-light");
+    $anuncio.classList.add("border");
     const $titulo = document.createElement("h3");
-    $titulo.classList.add("anuncioTitulo");
+    $titulo.classList.add("h3");
     $titulo.textContent = element.titulo;
     $anuncio.appendChild($titulo);
     const $transaccion = document.createElement("p");
@@ -90,13 +92,27 @@ const crearAnuncio = (data) => {
     $ul.appendChild($li3);
 
     $anuncio.appendChild($ul);
+    
+    const $img4 = document.createElement("img");
+    $img4.setAttribute("src", "../images/fondoAnuncio.png");
+    $img4.setAttribute("width", "200px");
+    $img4.setAttribute("alt", "auto");
+    $anuncio.appendChild($img4);
 
-    const $a = document.createElement("a");
-    $a.setAttribute("href", "#");
-    $a.classList.add("verVehiculo");
-    $a.textContent = "Ver Vehiculo";
+    const $img5 = document.createElement("img");
+    $img5.setAttribute("src", "../images/car2.png");
+    $img5.setAttribute("width", "200px");
+    $img5.setAttribute("alt", "auto");
+    $anuncio.appendChild($img5);
 
-    $anuncio.appendChild($a);
+    const btnVer = document.createElement("button");
+    btnVer.type = 'button';
+    btnVer.innerText = 'Ver Vehiculo'; 
+    btnVer.classList.add("btn");
+    btnVer.classList.add("btn-primary");
+    
+
+    $anuncio.appendChild(btnVer);
 
     $anuncios.appendChild($anuncio);
   });

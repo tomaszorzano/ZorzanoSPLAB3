@@ -1,33 +1,11 @@
-header {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
+
 body {
   background-image: url("../images/fondo.png");
-  background-repeat: no-repeat;
   background-color: lightgray;
-}
-#navHeader {
-  background-image: url(../images/logo.png);
+  background-position: center;
   background-repeat: no-repeat;
-  background-color: blue;
-  display: flex;
-  justify-content: end;
-  flex-direction: row;
-  height: auto;
-}
-
-footer {
-  background-color: blue;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
+  background-size: cover;
+  
 }
 
 ul {
