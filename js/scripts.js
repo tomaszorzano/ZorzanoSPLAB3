@@ -59,7 +59,8 @@ async function handlerSubmit(e) {
       document.getElementById("precio").value,
       document.getElementById("puertas").value,
       document.getElementById("kilometros").value,
-      document.getElementById("potencia").value
+      document.getElementById("potencia").value,
+      frm.combustible.value
     );
     if (await alertMod()) {
       //agregarSpinner();
@@ -79,7 +80,9 @@ async function handlerSubmit(e) {
         document.getElementById("precio").value,
         document.getElementById("puertas").value,
         document.getElementById("kilometros").value,
-        document.getElementById("potencia").value
+        document.getElementById("potencia").value,
+        frm.combustible.value
+
       );
       //agregarSpinner();
 
@@ -216,12 +219,14 @@ function cargarFrm(id) {
     kilometros,
     puertas,
     potencia,
+    combustible
   } = anuncios.filter((a) => a.id === parseInt(id))[0];
   const form = document.forms[0];
   document.getElementById("titulo").value = titulo;
   document.getElementById("descripcion").value = descripcion;
   document.getElementById("precio").value = precio;
   form.transaccion.value = transaccion;
+  form.combustible.value = combustible;
   document.getElementById("kilometros").value = kilometros;
   document.getElementById("puertas").value = puertas;
   document.getElementById("potencia").value = potencia;

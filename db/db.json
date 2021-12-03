@@ -7,8 +7,9 @@
       "descripcion": "Suzuki Fun 2005 Gris ",
       "precio": "230.000",
       "puertas": "5",
-      "kilometros": "189.000",
-      "potencia": "90"
+      "kilometros": "190.000",
+      "potencia": "90",
+      "combustible": "Nafta"
     },
     {
       "id": 3,
@@ -18,7 +19,8 @@
       "precio": "900.000",
       "puertas": "5",
       "kilometros": "130.000",
-      "potencia": "110"
+      "potencia": "110",
+      "combustible": "Gasoil"
     },
     {
       "id": 4,
@@ -28,7 +30,8 @@
       "precio": "125.000",
       "puertas": "3",
       "kilometros": "234.000",
-      "potencia": "200"
+      "potencia": "200",
+      "combustible": "Gasoil"
     },
     {
       "id": 1637671600046,
@@ -38,17 +41,19 @@
       "precio": "145.000",
       "puertas": "5",
       "kilometros": "145.00",
-      "potencia": "234"
+      "potencia": "234",
+      "combustible": "Nafta"
     },
     {
       "id": 1637698254605,
       "titulo": "Chevrolet Onix",
       "transaccion": "Venta",
       "descripcion": "Pocos Kilometros",
-      "precio": "340.000",
+      "precio": "500.000",
       "puertas": "5",
       "kilometros": "87.000",
-      "potencia": "125"
+      "potencia": "125",
+      "combustible": "Nafta"
     },
     {
       "id": 1637698321548,
@@ -58,17 +63,19 @@
       "precio": "500",
       "puertas": "2",
       "kilometros": "123.000",
-      "potencia": "90"
+      "potencia": "90",
+      "combustible": "Gasoil"
     },
     {
-      "id": 1637698364564,
-      "titulo": "TestBaja",
+      "id": 1637707241937,
+      "titulo": "Volkswagen Suran",
       "transaccion": "Venta",
-      "descripcion": "TestBaja",
-      "precio": "1",
-      "puertas": "1",
-      "kilometros": "1",
-      "potencia": "1"
+      "descripcion": "Suran 2014",
+      "precio": "955.000",
+      "puertas": "5",
+      "kilometros": "100.000",
+      "potencia": "234"
+      ,"combustible": "Nafta"
     }
   ]
 }
